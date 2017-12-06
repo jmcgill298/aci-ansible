@@ -31,7 +31,7 @@
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import json
-from deepcopy import deepcopy
+from copy import deepcopy
 
 from ansible.module_utils.urls import fetch_url
 from ansible.module_utils._text import to_bytes
