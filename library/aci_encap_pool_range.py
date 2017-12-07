@@ -210,18 +210,18 @@ def main():
     pool_name = pool
 
     # Validate range_end and range_start are valid for its respective encap type
-    for _ in range_end,range_start:
+    for _ in range_end, range_start:
         if _ is not None:
             if pool_type == 'vlan':
                 if not 1 <= _ <= 4094:
                     module.fail_json(msg='vlan pools must have "range_start" and "range_end" values between 1 and 4094')
             elif pool_type == 'vxlan':
                 if not 5000 <= _ <= 16777215:
-                   module.fail_json(msg='vxlan pools must have "range_start" and "range_end" values between 5000 and 16777215')
+                    module.fail_json(msg='vxlan pools must have "range_start" and "range_end" values between 5000 and 16777215')
             elif pool_type == 'vsan':
                 if not 1 <= _ <= 4093:
-                   module.fail_json(msg='vsan pools must have "range_start" and "range_end" values between 1 and 4093')
- 
+                    module.fail_json(msg='vsan pools must have "range_start" and "range_end" values between 1 and 4093')
+
     # Build proper proper filter_target based on range_start, range_end, and range_name
     if range_end is not None and range_start is not None:
         # Validate range_start is less than range_end
@@ -260,7 +260,6 @@ def main():
             pool_name = '[{0}]-{1}'.format(pool, pool_allocation_mode)
         else:
             module.fail_json(msg='ACI requires the "pool_allocation_mode" for "pool_type" of "vlan" and "vsan" when the "pool" is provided')
-
 
     aci = ACIModule(module)
     aci.construct_url(
