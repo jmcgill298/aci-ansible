@@ -21,12 +21,8 @@ description:
   I(fvns:VxlanInstP) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsVxlanInstP.html).
   I(fvns:VsanInstP) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsVsanInstP.html).
 author:
-- Swetha Chunduri (@schunduri)
-- Dag Wieers (@dagwieers)
 - Jacob McGill (@jmcgill298)
 version_added: '2.5'
-requirements:
-- ACI Fabric 1.0(3f)+
 options:
   allocation_mode:
     description:

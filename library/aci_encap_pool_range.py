@@ -20,12 +20,9 @@ description:
   I(fvns:EncapBlk) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsEncapBlk.html).
   I(fvns:VsanEncapBlk) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsVsanEncapBlk.html).
 author:
-- Swetha Chunduri (@schunduri)
-- Dag Wieers (@dagwieers)
 - Jacob McGill (@jmcgill298)
 version_added: '2.5'
 requirements:
-- ACI Fabric 1.0(3f)+
 - The C(pool) must exist in order to add or delete a range.
 options:
   allocation_mode:
@@ -210,16 +207,16 @@ def main():
     pool_name = pool
 
     # Validate range_end and range_start are valid for its respective encap type
-    for _ in range_end, range_start:
-        if _ is not None:
+    for encap_id in range_end, range_start:
+        if encap_id is not None:
             if pool_type == 'vlan':
-                if not 1 <= _ <= 4094:
+                if not 1 <= encap_id <= 4094:
                     module.fail_json(msg='vlan pools must have "range_start" and "range_end" values between 1 and 4094')
             elif pool_type == 'vxlan':
-                if not 5000 <= _ <= 16777215:
+                if not 5000 <= encap_id <= 16777215:
                     module.fail_json(msg='vxlan pools must have "range_start" and "range_end" values between 5000 and 16777215')
             elif pool_type == 'vsan':
-                if not 1 <= _ <= 4093:
+                if not 1 <= encap_id <= 4093:
                     module.fail_json(msg='vsan pools must have "range_start" and "range_end" values between 1 and 4093')
 
     # Build proper proper filter_target based on range_start, range_end, and range_name
