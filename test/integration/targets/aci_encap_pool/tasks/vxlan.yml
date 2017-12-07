@@ -39,6 +39,14 @@
     name: anstest_2
   register: create_vxlan_2
 
+- name: create vxlan pool with allocation mode - failure message works
+  aci_encap_pool:
+    <<: *aci_vxlan_present
+    name: anstest_3
+    allocation_mode: dynamic
+  ignore_errors: yes
+  register: create_vxlan_alloc_mode
+
 - name: assertion test - present
   assert:
     that:
@@ -53,6 +61,8 @@
       - update_vxlan.changed == true
       - 'update_vxlan.config == {"fvnsVxlanInstP": {"attributes": {"descr": "Ansible Test Change"}}}'
       - create_vxlan_2.changed == true
+      - create_vxlan_alloc_mode.failed == true
+      - 'create_vxlan_alloc_mode.msg == "vxlan pools do not support setting the allocation_mode; please remove this parameter from the task"'
 
 - name: get vxlan pool - get object works
   aci_encap_pool: &aci_vxlan_query

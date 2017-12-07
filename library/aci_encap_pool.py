@@ -154,6 +154,10 @@ def main():
         else:
             module.fail_json(msg='ACI requires the "allocation_mode" for "pool_type" of "vlan" and "vsan" when the "pool" is provided')
 
+    # Vxlan pools do not support allocation modes
+    if pool_type == 'vxlan' and allocation_mode is not None:
+        module.fail_json(msg='vxlan pools do not support setting the allocation_mode; please remove this parameter from the task')
+
     aci = ACIModule(module)
     aci.construct_url(
         root_class=dict(
