@@ -22,6 +22,8 @@
     tags: aci_contract_subject_to_filter
   - include_tasks: test/integration/targets/aci_encap_pool/tasks/main.yml
     tags: aci_encap_pool
+  - include_tasks: test/integration/targets/aci_encap_pool_range/tasks/main.yml
+    tags: aci_encap_pool_range
   - include_tasks: test/integration/targets/aci_epg/tasks/main.yml
     tags: aci_epg
   - include_tasks: test/integration/targets/aci_epg_to_contract/tasks/main.yml
