@@ -17,8 +17,7 @@ short_description: Manage encap ranges assigned to pools on Cisco ACI fabrics (f
 description:
 - Manage vlan, vxlan, and vsan ranges that are assigned to pools on Cisco ACI fabrics.
 - More information from the internal APIC class
-  I(fvns:EncapBlk) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsEncapBlk.html).
-  I(fvns:VsanEncapBlk) at U(https://pubhub-prod.s3.amazonaws.com/media/apic-mim-ref/docs/MO-fvnsVsanEncapBlk.html).
+  I(fvns:EncapBlk) and I(fvns:VsanEncapBlk) at U(https://developer.cisco.com/site/aci/docs/apis/apic-mim-ref/).
 author:
 - Jacob McGill (@jmcgill298)
 version_added: '2.5'
